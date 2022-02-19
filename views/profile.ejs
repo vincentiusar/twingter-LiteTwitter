@@ -1,0 +1,65 @@
+<%- include('layouts/profile-header') %>
+<%- include('layouts/nav_login', {user: user}) %>
+<%- include('layouts/welcome', {user: user}) %>
+    
+        <div class="col-md-8 text-center" id="profile">
+            <h1>
+                <center>Hello, <%= user.nama %></center>
+            </h1>
+
+            <form method="POST" action="/update?_method=PUT" enctype="multipart/form-data">
+                <% if (user.prfpict === undefined) { %>
+                <img src="../defaultProfile.png" class="img-thumbnail rounded-circle" width="200"><br><br>
+                <% } else { %>
+                <img src="<%= user.prfpict %>" class="img-thumbnail rounded-circle" width="200"><br><br>
+                <% } %>
+                <label for="profile_pict">Select a Profile Picture : </label>
+                <input type="file" id="myfile" name="myfile" accept="image/gif, image/jpeg, image/png"><br><br>
+
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="nama" name="nama" value="<%= user.nama %>" required>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<%= user.email%>" required>
+                        <div id="email" class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="address" class="form-control" id="address" name="address" value="<%= user.address %>">
+                        <div id="address" class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender</label>
+                        <br>
+                        <input type="radio" id="html" name="gender" value="Male" <% if (user.gender === "Male") { %>
+                            checked="checked" <% } %>>
+                        <label for="html">Male</label><br>
+                        <input type="radio" id="css" name="gender" value="Female" <% if (user.gender === "Female") { %>
+                            checked="checked" <% } %>>
+                        <label for="css">Female</label><br>
+                    </div>
+                    <div class="mb-3">
+                        <label for="oldPassword" class="form-label">Old Password</label>
+                        <input type="password" class="form-control" id="oldPassword" name="oldPassword"
+                            value="<%= user.password %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label"> New Password</label>
+                        <br>
+                        <label class="form-label"><strong> [Keep it Empty if You don't want to change your password]</strong></label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                    <br><br>
+                </div>
+            </form>
+        </div>
+
+        <%- include('layouts/people') %>
+
+    </div>
+</div>
+
+<%- include('layouts/footer') %>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../twingter.jpg">
+    
+    <style>
+        html, body {
+            height: 110%;
+            font-family: Arial;
+        }
+
+        h1 {
+            font-size:3vw;
+        }
+
+        h2 {
+            font-size:2vw;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #topnav {
+            width: 100%;
+            background: rgb(0, 63, 189);
+            z-index: 1;
+        }
+
+        #footer {
+            position: fixed;
+            top: 96%;
+        }
+
+        .navbar_bot {
+            position: absolute;
+            bottom: 0px;
+        }
+
+        #menu {
+            position: fixed;
+            position: fixed;
+            overflow-x: hidden;
+            overflow-y: auto;
+            float: left;
+            left: 7%;
+            height: 60%;
+            width: 16%;
+            background-color: rgb(148, 148, 148);
+            border: 3px solid rgb(62, 62, 62);
+            border-radius: 25px;
+        }
+
+        .topicfeed {
+            padding: 1%;
+            position: fixed;
+            overflow-x: hidden;
+            overflow-y: auto;
+            float: left;
+            width: 16%;
+            left: 81%;
+            height: 60%;
+            max-height: 60%;
+            background-color: rgb(148, 148, 148);
+            border: 3px solid rgb(62, 62, 62);
+            border-radius: 25px;
+        }
+
+        #post {
+            position: absolute;
+            z-index: 0;
+            float: left;
+            left: 24%;
+            height: 110%;
+            width: 56%;
+            background-color: rgb(220, 220, 220);
+            border: 3px solid rgb(62, 62, 62);
+            border-radius: 10px;}
+
+        #profile {
+            position: absolute;
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index: 0;
+            height: 90%;
+            float: left;
+            left: 24%;
+            width: 56%;
+            background-color: rgb(220, 220, 220);
+            border: 3px solid rgb(62, 62, 62);
+            border-radius: 10px;
+        }
+
+        @media screen and (max-width: 1100px) {
+            #menu, .topicfeed {
+            visibility: hidden;
+            }
+
+            #profile {
+                padding: 20px;
+                float: left;
+                left: 7%;
+                width: 85%;
+                top: 15%;
+            }
+        }
+
+        #search-btn {
+            color:rgb(255, 217, 0);
+            background-color: black;
+        }
+
+        #friends:link {
+            color: rgb(2, 0, 69);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #friends:visited {
+            color: rgb(0, 0, 88);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        #friends:hover {
+            color: rgb(0, 29, 132);
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        #form {
+            max-height: 108%;
+        }
+
+        #feeds {
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 2%;
+            height: 100%;
+        }
+
+        p {
+            margin-left:110px;
+        }
+
+        h1 {
+            position: relative;
+            font-family: Arial;
+            font-size: 50;
+            left: 0px;
+            top: 10px;
+            padding-bottom: 0.5cm;
+        }
+    </style>
+
+  </head>
+<body>
+
+<%- include('layouts/nav_login', {user: user_login}) %>
+<%- include('layouts/welcome', {user: user_login}) %>
+
+        <div class="col-md-8 text-center" id="profile">
+            <% if (user.prfpict === undefined) { %>
+                <img src="../defaultProfile.png" class="img-thumbnail rounded-circle" width="200"><br><br>
+            <% } else { %>
+                <img src="<%= user.prfpict %>" class="img-thumbnail rounded-circle" width="200"><br><br>
+            <% } %>
+            <h1>
+                <center><%= user.nama %></center>
+            </h1>
+            <br><br>
+
+            <input type="hidden" name="id" value="<%= user.id %>">
+            <div class="mb-3">
+                <div class="mb-3">
+                    <h3>Email</h3>
+                    <h4><%= user.email%></h4>
+                </div>
+                <div class="mb-3">
+                    <h3>Address</h3>
+                    <h4><%= (user.address === undefined) ? "-" : user.address%></h4>
+                    <div id="address" class="form-text"></div>
+                </div>
+                <div class="mb-3">
+                    <h3>Gender</h3>
+                    <h4><%= (user.gender === undefined) ? "-" : user.gender%></h4>
+                </div>
+                
+                <br><br>
+                <% if (user.id === user_login.id) { %>
+                    <form action="/profile">
+                        <button type="submit" class="btn btn-primary" style="border: 2px solid black; font-size:1vw;">Edit Profile</button>
+                    </form>
+                <% } %>
+            </div>
+            <br>
+            <h2>Posted</h2>
+            <div id="feeds">
+                <hr style="height: 5px; background: black;">
+                <% let pointer = user.feeds.length - 1; %> 
+                <% if (pointer === -1) { %>
+                    <h3>This Person Never Post Anything Yet. . .</h3>
+                <% } else { for (let i = feeds.length-1; i >= 0; i--) { %>
+                    <% if (feeds[i].id === user.feeds[pointer]) { %>
+                        <div style="border: 3px solid rgb(36, 0, 126); border-radius: 25px; background-color: rgb(109, 206, 255); padding: 2%;">
+                            <center> 
+                                <% if (feeds[i].pict !== undefined) { %>
+                                    <img src="<%= feeds[i].pict %>" width="300">
+                                <% } %>
+                            </center>
+                            <br>
+                            <% if (feeds[i].describe !== "") { %>
+                                <div style="border: 3px solid rgb(91, 25, 255); border-radius: 25px; background-color: rgb(22, 255, 220); padding: 2%;">
+                                    <%= feeds[i].describe %>
+                                </div>
+                            <% } %>
+                        </div>
+                        <br>
+                    <% pointer--; } %> 
+                <% }} %> 
+            </div>
+        </div>
+        <%- include('layouts/people') %>
+        
+<%- include('layouts/footer') %>

@@ -1,0 +1,27 @@
+        <div class="topicfeed col-md-2">
+            <h2>
+                <center>People You Might Know</center>
+            </h2>
+            <hr style="height: 5px; background: black;">
+            <% let people = []; %>
+                <% for (let i = 0; i < 8 && people.length !== users.length; i++) { %> 
+                    <% let randomUser, found = false;
+                    do { 
+                        randomUser = (Math.floor(Math.random() * 100)) % users.length;
+
+                        if (!people.includes(randomUser)) {
+                            people.push(randomUser);
+                            found = true
+                        }
+                    } while (!found);
+                    %>
+                    
+                        <% if (users[randomUser].prfpict === undefined) { %>
+                            <img src="../defaultProfile.png" class="img-thumbnail rounded-circle" width="50">
+                        <% } else { %>
+                            <img src="<%= users[randomUser].prfpict %>" class="img-thumbnail rounded-circle" width="50">
+                        <% } %>
+                        <a href="/profile/<%= users[randomUser].id %>" id="friends"> <%= users[randomUser].nama %></a>
+                        <br><br>
+                <% } %> 
+        </div>

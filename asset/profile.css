@@ -1,0 +1,139 @@
+html, body {
+    height: 110%;
+    font-family: Arial;
+}
+
+h1 {
+    font-size:3vw;
+}
+
+h2 {
+    font-size:2vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#topnav {
+    width: 100%;
+    background: rgb(0, 63, 189);
+    z-index: 1;
+}
+
+#footer {
+    position: fixed;
+    top: 96%;
+}
+
+.navbar_bot {
+    position: absolute;
+    bottom: 0px;
+}
+
+#menu {
+    position: fixed;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    float: left;
+    left: 7%;
+    height: 60%;
+    width: 16%;
+    background-color: rgb(148, 148, 148);
+    border: 3px solid rgb(62, 62, 62);
+    border-radius: 25px;
+}
+
+.topicfeed {
+    padding: 1%;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    float: left;
+    width: 16%;
+    left: 81%;
+    height: 60%;
+    max-height: 60%;
+    background-color: rgb(148, 148, 148);
+    border: 3px solid rgb(62, 62, 62);
+    border-radius: 25px;
+}
+
+#post {
+    position: absolute;
+    z-index: 0;
+    float: left;
+    left: 24%;
+    height: 110%;
+    width: 56%;
+    background-color: rgb(220, 220, 220);
+    border: 3px solid rgb(62, 62, 62);
+    border-radius: 10px;}
+
+#profile {
+    position: absolute;
+    z-index: 0;
+    float: left;
+    padding: 1%;
+    left: 24%;
+    height: auto;
+    width: 56%;
+    background-color: rgb(220, 220, 220);
+    border: 3px solid rgb(62, 62, 62);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+    #menu, .topicfeed {
+      visibility: hidden;
+    }
+
+    #profile {
+        padding: 20px;
+        float: left;
+        left: 7%;
+        width: 85%;
+        top: 15%;
+    }
+}
+
+#search-btn {
+    color:rgb(255, 217, 0);
+    background-color: black;
+}
+
+#friends:link {
+    color: rgb(2, 0, 69);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#friends:visited {
+    color: rgb(0, 0, 88);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+#friends:hover {
+    color: rgb(0, 29, 132);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+#form {
+    max-height: 108%;
+}
+
+p {
+    margin-left:110px;
+}
+
+h1 {
+    position: relative;
+    font-family: Arial;
+    font-size: 50;
+    left: 0px;
+    top: 10px;
+    padding-bottom: 0.5cm;
+}

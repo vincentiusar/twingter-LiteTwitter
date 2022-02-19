@@ -1,0 +1,37 @@
+<%- include('layouts/header') %>
+<%- include('layouts/nav_login', {user: user}) %>
+<%- include('layouts/welcome', {user: user}) %>
+    
+        <div class="col" id="mainfeed">
+            <h2 color="black"> Users Similar to "<%= nama %>" </h2>
+            <hr style="height: 5px; background: black;">
+
+            <left>
+                <% let count = 0 %>
+                <% for (let i = 0; i < users.length; i++) { %>
+                    <% if (users[i].nama.toLowerCase().includes(nama.toLowerCase())) { %>
+                        <div id="user">
+
+                        <% if (users[i].prfpict === undefined) { %>
+                            <a href="profile/<%= users[i].id %>">
+                                <img src="../defaultProfile.png" width="150" class="img-thumbnail rounded-circle">
+                            </a>
+                        <% } else { %> 
+                            <a href="profile/<%= users[i].id %>">
+                                <img src="<%= users[i].prfpict %>" width="150" class="img-thumbnail rounded-circle">
+                            </a>
+                        <% } %>
+                        <a href="profile/<%= users[i].id %>"> <%= users[i].nama %> </a>
+                        </div>
+                        <br>
+                    <% } %>
+                <% } %>
+            </left>
+        </div>
+
+        <%- include('layouts/people') %>
+
+    </div>
+</div>
+
+<%- include('layouts/footer') %>

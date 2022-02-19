@@ -1,0 +1,33 @@
+<%- include('layouts/header') %>
+<%- include('layouts/nav_logout') %> 
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8"></div>
+            <h1>Login</h1>
+            <% if (messages.error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= messages.error %>
+            </div>
+            <% } %>
+            <form method="POST" action="/login">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                <div id="email" class="form-text"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+                    Don't Have Account? Sign Up now
+                <br>
+                <a href="/signup" class="btn btn-warning">Sign Up</a>
+            </form>
+    </div>
+</div>
+
+<%- include('layouts/footer') %> 

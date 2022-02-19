@@ -1,0 +1,35 @@
+<%- include('layouts/header') %>
+<%- include('layouts/nav_login', {user: user}) %>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col" id="feed-create">
+            <h2>
+                New Post
+            </h2>
+            <hr style="height: 5px; color: black;">
+            <br>
+            <form class="text-center" method="post" action="/post" enctype="multipart/form-data">
+                <h4>Add photo [optional]</h4>
+                <br>
+
+                <label for="profile_pict">
+                    Select a Picture : 
+                </label>
+
+                <input type="file" id="myfile" name="myfile" accept="image/gif, image/jpeg, image/png">
+                <br><br>
+
+                <h4>Description</h4>
+                <textarea id="desc" name="desc" rows="20" cols="60"></textarea>
+                <br><br>
+
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<%- include('layouts/footer') %> 

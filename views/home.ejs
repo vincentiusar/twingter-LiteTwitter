@@ -1,0 +1,35 @@
+<%- include('layouts/header') %>
+<%- include('layouts/nav_login', {user: user}) %>
+<%- include('layouts/welcome', {user: user}) %>
+
+        <div class="col" id="mainfeed">
+            <h2 color="black"> Recent Posts </h2>
+            <hr style="height: 5px; background: black;">
+
+            <left>
+                <% for (let i = feeds.length - 1; i >= 0; i--) { %>
+                    <ul>
+                        <div style="border: 3px solid rgb(36, 0, 126); border-radius: 25px; background-color: rgb(109, 206, 255); padding: 2%;">
+                            <h4>Username: <%= feeds[i].nama %></h4>
+
+                            <h4>Email: <%= feeds[i].email %></h4>
+
+                            <center> 
+                                <% if (feeds[i].pict !== undefined) { %>
+                                    <img src="<%= feeds[i].pict %>" width="300">
+                                <% } %>
+                            </center>
+                            <br>
+                            <% if (feeds[i].describe !== "") { %>
+                                <div style="border: 3px solid rgb(91, 25, 255); border-radius: 25px; background-color: rgb(22, 255, 220); padding: 2%;">
+                                    <%= feeds[i].describe %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </ul>
+                <% } %>
+            </left>
+        </div>
+        <%- include('layouts/people') %> 
+        
+<%- include('layouts/footer') %> 
