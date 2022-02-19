@@ -8,3 +8,5 @@ Database using mongodb atlas
 
 ## deploy
 https://twingter.herokuapp.com
+
+NOTE: please don't use your real email and password
