@@ -7,4 +7,4 @@ Save Data using cloudinary
 Database using mongodb atlas
 
 ## deploy
-twingter.herokuapp.com
+https://twingter.herokuapp.com
