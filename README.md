@@ -10,3 +10,7 @@ Database using mongodb atlas
 https://twingter.herokuapp.com
 
 NOTE: please don't use your real email and password
+
+DEMO ACCOUNT
+email : demo@gmail.com
+password : demo
