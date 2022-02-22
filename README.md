@@ -11,6 +11,6 @@ https://twingter.herokuapp.com
 
 NOTE: please don't use your real email and password
 
-DEMO ACCOUNT
-email : demo@gmail.com
+DEMO ACCOUNT<br>
+email : demo@gmail.com<br>
 password : demo
